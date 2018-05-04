@@ -10,12 +10,12 @@ git clone https://github.com/arc34/dotfiles.git ~/.dotfiles
 ```bash
 alias dgit="git --git-dir ~/.dotfiles/.git --work-tree=$HOME"
 ```
-2. Switch to a specific project branch
+3. Switch to a specific project branch
 ```bash
 cd ~/
 dgit checkout <project branch>
 ```
-3. In $HOME folder, execute the following
+4. In $HOME folder, execute the following
 ```bash
 dgit reset --hard
 ```

@@ -74,7 +74,8 @@ set tw=0
 " Rendering
 set ttyfast
 
-set rtp+=/usr/lib/python3.3/site-packages/powerline/bindings/vim/
+" disable in favor of vim-airline
+"set rtp+=/usr/lib/python2.7/site-packages/powerline/bindings/vim/
 set rtp+=~/.fzf
 
 " Status bar
@@ -126,9 +127,9 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_mode_map = {
-    \ "mode": "passive",
-    \ "active_filetypes": ["c"],
-    \ "passive_filetypes": [] }
+     \ "mode": "passive",
+     \ "active_filetypes": ["c"],
+     \ "passive_filetypes": [] }
 let g:syntastic_always_populate_loc_list = 1
 "let g:syntastic_auto_loc_list = 1
 "let g:syntastic_check_on_open = 1
@@ -152,6 +153,10 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
 " DCM make configuration
 "  NOTE: 'linkdcm' and 'mkoampf' are alias in ~/.bashrc
 let &makeprg = "make cppf OAM_STUB=1"
+
+" vim-airline configurations
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
 
 " run make command in vim
 nnoremap <F2> :NERDTreeToggle<CR>

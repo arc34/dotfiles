@@ -35,6 +35,8 @@ alias mkcppf='make cppf OAM_STUB=1 |& tee out'
 alias mkclean='make clean OAM_STUB=1'
 alias ggignore='find . -type d ! -path "*.git*" -empty -exec cp /home/allan/.script/sample.gitignore/.gitignore '{}'/ \;'
 alias mkcppfut="$HOME/.script/utcppf.sh |& tee cp_warning.txt"
+alias mkoampfut="$HOME/.script/utoampf.sh |& tee oam_warning.txt"
+alias mkmeasut="$HOME/.script/utmeas.sh |& tee meas_warning.txt"
 
 FZF_TMUX=1
 FZF_TMUX_HEIGHT=5

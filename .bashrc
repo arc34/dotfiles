@@ -24,7 +24,7 @@ alias vi='/usr/bin/vim'
 #alias ag='find . -name "*.[ch]" | xargs grep'
 alias agall='find . -name "*.*" | xargs grep'
 alias ff="find . -name"
-alias tmuxsession="$HOME/.script/tmuxsession.sh"
+#alias tmuxsession="$HOME/.script/tmuxsession.sh"
 alias mkdb=". $HOME/.script/mkdb.sh; $HOME/.script/ccdb.sh"
 alias ccdb="$HOME/.script/ccdb.sh"
 alias cedir="$HOME/.script/cedir.sh"
@@ -39,7 +39,8 @@ alias mkoampfut="$HOME/.script/utoampf.sh |& tee oam_warning.txt"
 alias mkmeasut="$HOME/.script/utmeas.sh |& tee meas_warning.txt"
 
 #for docker
-alias runsit="$HOME/.script/runsit.sh"
+alias runpf="$HOME/.script/runpf.sh"
+alias runcmn="$HOME/.script/runcmn.sh"
 alias stpsit="$HOME/.script/stpsit.sh"
 alias rstsit="$HOME/.script/rstsit.sh"
 alias chksit="$HOME/.script/chksit.sh"
@@ -50,3 +51,4 @@ alias conlsp14='sudo docker exec -it lsp14 /bin/bash'
 #FZF_TMUX=1
 #FZF_TMUX_HEIGHT=5
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[ -f ~/.tmuxsession.bash ] && source ~/.tmuxsession.bash

@@ -1,7 +1,11 @@
 #!/bin/bash
 
 #Update if docker is installed/build in different path
-DOCKERCMD='sudo /usr/bin/docker'
+if [[ $EUID -ne 0 ]]; then
+    DOCKERCMD='sudo /usr/bin/docker'
+else
+    DOCKERCMD='/usr/bin/docker'
+fi
 
 #Define name of network to be used by the containers
 SIT_NET='SIT_NET'
@@ -14,6 +18,10 @@ WORKSPACE_LSP14="$HOST_WORKSPACE_PATH/LSP14"
 
 #[For Virtual Box user's] Define shared folder path of windows host
 WIN_HOST_SF_PATH='/media/sf_repository'
+
+#Image to use
+IMAGE_REPO='archive.docker-registry.eecloud.nsn-net.net/allco/fedora'
+IMAGE_TAG='hdbde-systemd-cmn'
 
 #######################################################################
 #################### DO NOT EDIT FROM HERE ONWARDS ####################
@@ -36,38 +44,29 @@ if [ -n "$1" ]; then
                    --tmpfs /tmp --tmpfs /run -v /sys/fs/cgroup:/sys/fs/cgroup:ro \
                    -v $WORKSPACE_LCP0:/root/workspace \
                    -v $WIN_HOST_SF_PATH:$WIN_HOST_SF_PATH \
-                   -v /lib:/lib \
-                   -v /usr:/usr \
-                   -v /usr/lib:/usr/lib \
-                   -v /usr/lib64:/usr/lib64 \
-                   -v /var:/var \
-                   --shm-size="1gb" --cap-add=ALL --privileged fedora-hdbde:sit
+                   -v /lib/modules:/lib/modules \
+                   -v /usr/src/kernels:/usr/src/kernels \
+                   --shm-size="1gb" --cap-add=ALL --privileged $IMAGE_REPO:$IMAGE_TAG
     elif [ "$1" == "lsp00" ]; then
         $DOCKERCMD run -d --name lsp00 --hostname "lsp00" --network=$SIT_NET --ip 192.168.129.102 \
                    --tmpfs /tmp --tmpfs /run -v /sys/fs/cgroup:/sys/fs/cgroup:ro \
                    -v $WORKSPACE_LSP00:/root/workspace \
                    -v $WIN_HOST_SF_PATH:$WIN_HOST_SF_PATH \
-                   -v /lib:/lib \
-                   -v /usr:/usr \
-                   -v /usr/lib:/usr/lib \
-                   -v /usr/lib64:/usr/lib64 \
-                   -v /var:/var \
-                   --shm-size="1gb" --cap-add=ALL --privileged fedora-hdbde:sit
+                   -v /lib/modules:/lib/modules \
+                   -v /usr/src/kernels:/usr/src/kernels \
+                   --shm-size="1gb" --cap-add=ALL --privileged $IMAGE_REPO:$IMAGE_TAG
     elif [ "$1" == "lsp14" ]; then
         $DOCKERCMD run -d --name lsp14 --hostname "lsp14" --network=$SIT_NET --ip 192.168.129.110 \
                    --tmpfs /tmp --tmpfs /run -v /sys/fs/cgroup:/sys/fs/cgroup:ro \
                    -v $WORKSPACE_LSP14:/root/workspace \
                    -v $WIN_HOST_SF_PATH:$WIN_HOST_SF_PATH \
-                   -v /lib:/lib \
-                   -v /usr:/usr \
-                   -v /usr/lib:/usr/lib \
-                   -v /usr/lib64:/usr/lib64 \
-                   -v /var:/var \
-                   --shm-size="1gb" --cap-add=ALL --privileged fedora-hdbde:sit
+                   -v /lib/modules:/lib/modules \
+                   -v /usr/src/kernels:/usr/src/kernels \
+                   --shm-size="1gb" --cap-add=ALL --privileged $IMAGE_REPO:$IMAGE_TAG
     else
         echo "Card Type $1 not supported"
-        echo "USAGE: runsit <lcp0/lsp00/lsp14>"
+        echo "USAGE: runcmn <lcp0/lsp00/lsp14>"
     fi
 else
-    echo "USAGE: runsit <lcp0/lsp00/lsp14>"
+    echo "USAGE: runcmn <lcp0/lsp00/lsp14>"
 fi

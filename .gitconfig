@@ -1,0 +1,19 @@
+[core]
+	autocrlf = input
+[user]
+	name = Allan Co
+	email = allan.co@nokia.com
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = auto
+	ui = true
+	pager = true
+[http]
+	proxy = http://phquprx100.apac.nsn-net.net:8080
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f

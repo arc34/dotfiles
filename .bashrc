@@ -44,9 +44,10 @@ alias runcmn="$HOME/.script/runcmn.sh"
 alias stpsit="$HOME/.script/stpsit.sh"
 alias rstsit="$HOME/.script/rstsit.sh"
 alias chksit="$HOME/.script/chksit.sh"
-alias conlcp0='sudo docker exec -it lcp0 /bin/bash'
-alias conlsp00='sudo docker exec -it lsp00 /bin/bash'
-alias conlsp14='sudo docker exec -it lsp14 /bin/bash'
+alias conlcp0='sudo docker exec -e COLUMNS="`tput cols`" -e LINES="`tput lines`" -it lcp0 /bin/bash'
+alias conlsp00='sudo docker exec -e COLUMNS="`tput cols`" -e LINES="`tput lines`" -it lsp00 /bin/bash'
+alias conlsp14='sudo docker exec -e COLUMNS="`tput cols`" -e LINES="`tput lines`" -it lsp14 /bin/bash'
+alias conmwtf='sudo docker exec -e COLUMNS="`tput cols`" -e LINES="`tput lines`" -it mwtf /bin/bash'
 
 #FZF_TMUX=1
 #FZF_TMUX_HEIGHT=5

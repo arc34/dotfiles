@@ -1,5 +1,6 @@
 #!/bin/bash
-CFG_REG_TEST_FILE=$HOME/.test_resource/cfg_registers
+TEST_RESOURCE_PATH=$HOME/.test_resource/$1
+CFG_REG_TEST_FILE=$TEST_RESOURCE_PATH/cfg_registers
 
 if [ -n "$FAPROOT" ]; then
     #enter FAPROOT

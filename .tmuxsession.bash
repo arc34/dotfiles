@@ -19,17 +19,26 @@ createMainSession () {
     cd $HOME/workspace/LSP14
     tmux new-window -t TERM:3 -d -n "LSP14"
 
-    cd $HOME/workspace
-    tmux new-window -t TERM:4 -d -n "RUN-1LCP"
+    cd $HOME/workspace/UT
+    tmux new-window -t TERM:4 -d -n "UT"
+    tmux select-window -t TERM:4 
+    tmux split-window -v
 
     cd $HOME/workspace
-    tmux new-window -t TERM:5 -n "RUN-1LCP,1LSP"
+    tmux new-window -t TERM:5 -d -n "RUN-1LCP"
+
+    cd $HOME/workspace
+    tmux new-window -t TERM:6 -n "RUN-1LCP,1LSP"
+    tmux select-window -t TERM:6
     tmux split-window -h
 
     cd $HOME/workspace
-    tmux new-window -t TERM:6 -n "RUN-1LCP,2LSP"
+    tmux new-window -t TERM:7 -n "RUN-1LCP,2LSP"
+    tmux select-window -t TERM:7
     tmux split-window -h
     tmux split-window -v
+
+    tmux select-window -t TERM:1
 }
 
 # create new tmux session attached to Main Session

@@ -154,13 +154,20 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
 "  NOTE: 'linkdcm' and 'mkoampf' are alias in ~/.bashrc
 let &makeprg = "make cppf OAM_STUB=1"
 
+" ctags vim
+"let g:ctags_path=$CTAGS_FILE
+"let g:ctags_statusline=1
+
 " vim-airline configurations
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
+"let g:airline_powerline_fonts = 1
+"let g:airline#extensions#tabline#enabled = 1
 
 " run make command in vim
 nnoremap <F2> :NERDTreeToggle<CR>
 nnoremap <F5> :!mkdb<CR>:cs reset<CR>
 nnoremap <F6> :GundoToggle<CR>
 nnoremap <F7> :make<bar>copen<CR>
+nnoremap <F8> :TagbarToggle<CR>
 nnoremap <silent> <C-p> :FZF<CR> 
+nnoremap <leader>f :Buffers<CR>
+

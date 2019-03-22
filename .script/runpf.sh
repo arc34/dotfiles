@@ -16,6 +16,9 @@ WORKSPACE_LCP0="$HOST_WORKSPACE_PATH/LCP0"
 WORKSPACE_LSP00="$HOST_WORKSPACE_PATH/LSP00"
 WORKSPACE_LSP14="$HOST_WORKSPACE_PATH/LSP14"
 
+#Define path for test resource (e.g. cfg_registers, etc.)
+TEST_RESOURCE_PATH=$HOME/.test_resource
+
 #[For Virtual Box user's] Define shared folder path of windows host
 WIN_HOST_SF_PATH='/media/sf_repository'
 
@@ -43,6 +46,7 @@ if [ -n "$1" ]; then
         $DOCKERCMD run -d --name lcp0 --hostname "lcp0" --network=$SIT_NET --ip 192.168.129.101 \
                    --tmpfs /tmp --tmpfs /run -v /sys/fs/cgroup:/sys/fs/cgroup:ro \
                    -v $WORKSPACE_LCP0:/root/workspace \
+                   -v $TEST_RESOURCE_PATH:/root/.test_resource \
                    -v $WIN_HOST_SF_PATH:$WIN_HOST_SF_PATH \
                    -v /lib/modules:/lib/modules \
                    -v /usr/src/kernels:/usr/src/kernels \
@@ -51,6 +55,7 @@ if [ -n "$1" ]; then
         $DOCKERCMD run -d --name lsp00 --hostname "lsp00" --network=$SIT_NET --ip 192.168.129.102 \
                    --tmpfs /tmp --tmpfs /run -v /sys/fs/cgroup:/sys/fs/cgroup:ro \
                    -v $WORKSPACE_LSP00:/root/workspace \
+                   -v $TEST_RESOURCE_PATH:/root/.test_resource \
                    -v $WIN_HOST_SF_PATH:$WIN_HOST_SF_PATH \
                    -v /lib/modules:/lib/modules \
                    -v /usr/src/kernels:/usr/src/kernels \
@@ -59,6 +64,7 @@ if [ -n "$1" ]; then
         $DOCKERCMD run -d --name lsp14 --hostname "lsp14" --network=$SIT_NET --ip 192.168.129.110 \
                    --tmpfs /tmp --tmpfs /run -v /sys/fs/cgroup:/sys/fs/cgroup:ro \
                    -v $WORKSPACE_LSP14:/root/workspace \
+                   -v $TEST_RESOURCE_PATH:/root/.test_resource \
                    -v $WIN_HOST_SF_PATH:$WIN_HOST_SF_PATH \
                    -v /lib/modules:/lib/modules \
                    -v /usr/src/kernels:/usr/src/kernels \

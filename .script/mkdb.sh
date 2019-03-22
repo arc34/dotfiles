@@ -6,7 +6,7 @@ CTAGS='/usr/bin/ctags'
 WORK_DIR=`pwd`
 CSDB_MAIN_DIR="$HOME/.csdb"
 CSDB_TNUM_FILE="$CSDB_MAIN_DIR/tnum"
-EXT_SUPPORT_LIST="c h cpp cxx hpp hxx"
+EXT_SUPPORT_LIST="c h cpp cxx hpp hxx py robot"
 
 #create cscope database main directory
 if [ ! -d "$CSDB_MAIN_DIR" ]; then

@@ -147,6 +147,9 @@ let g:gundo_preview_height = 20
 let g:gundo_right = 1
 let g:gundo_preview_bottom = 1
 
+"vim-airline fonts
+let g:airline_powerline_fonts = 1
+
 "for using ag in ack.vim
 let g:ackprg = 'ag --nogroup --nocolor --column'
 

@@ -114,12 +114,22 @@ map <leader>l :set list!<CR> " Toggle tabs and EOL
 
 " Color scheme (terminal)
 set t_Co=256
+set t_ut=
 set background=dark
-let g:solarized_termcolors=256
-let g:solarized_termtrans=1
+
+" soloarize color setting
+"let g:solarized_termcolors=256
+"let g:solarized_termtrans=1
 " put https://raw.github.com/altercation/vim-colors-solarized/master/colors/solarized.vim
 " in ~/.vim/colors/ and uncomment:
-colorscheme solarized
+" colorscheme solarized
+
+" gruvbox color setting
+"let g:gruvbox_contrast_dark = 'hard'
+"colorscheme gruvbox
+
+" codedark color setting
+colorscheme codedark
 
 " syntastic configs
 set statusline+=%#warningmsg#

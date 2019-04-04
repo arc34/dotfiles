@@ -22,7 +22,7 @@ fi
 ```
 4. Copy *.bash_predot* in your HOME directory
 ```bash
-copy ~/.dotfiles/.bash_predot ~/
+cp ~/.dotfiles/.bash_predot ~/
 ```
 5. Switch to a specific project branch (optional)
 ```bash

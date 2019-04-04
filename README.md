@@ -6,16 +6,30 @@
 ```bash
 git clone https://github.com/arc34/dotfiles.git ~/.dotfiles
 ```
-2. Add the following alias in your ~/.bashrc
+2. Add the following at the top of your ~/.bashrc
 ```bash
-alias dgit="git --git-dir ~/.dotfiles/.git --work-tree=$HOME"
+# Source my dotfiles pre-setup alias
+if [ -f ~/.bash_predot ]; then
+	. .bash_predot
+fi
 ```
-3. Switch to a specific project branch
+3. Add the following at the bottom of your ~/.bashrc
+```bash
+# Source my dotfiles
+if [ -f ~/.bash_postdot ]; then
+	. .bash_postdot
+fi
+```
+4. Copy *.bash_predot* in your HOME directory
+```bash
+copy ~/.dotfiles/.bash_predot ~/
+```
+5. Switch to a specific project branch (optional)
 ```bash
 cd ~/
 dgit checkout <project branch>
 ```
-4. In $HOME folder, execute the following
+6. In $HOME folder, execute the following
 ```bash
 dgit reset --hard
 ```
@@ -24,7 +38,6 @@ dgit reset --hard
 
 Performing the above commands will replace the contents of 
 following files/directory.
-- .bashrc
 - .vimrc
 - .tmux.conf
 - .vim (directory)

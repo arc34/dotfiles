@@ -1,12 +1,12 @@
 " Helps force plugins to load correctly when it is turned back on below
 filetype off
 
+" Our vim's plugin manager
+" (TODO: Check other plugin manager e.g. vundle)
 execute pathogen#infect()
 
 " Don't try to be vi compatible
 set nocompatible
-
-" TODO: Load plugins here (pathogen or vundle)
 
 " Turn on syntax highlighting
 syntax on
@@ -15,7 +15,7 @@ syntax on
 "filetype plugin indent on
 filetype plugin on
 
-" TODO: Pick a leader key
+" Enable and Update to change leader key (default is '\')
 " let mapleader = ","
 "
 
@@ -74,7 +74,8 @@ set tw=0
 " Rendering
 set ttyfast
 
-set rtp+=/usr/lib/python3.3/site-packages/powerline/bindings/vim/
+" disable in favor of vim-airline
+"set rtp+=/usr/lib/python3.3/site-packages/powerline/bindings/vim/
 set rtp+=~/.fzf
 
 " Status bar
@@ -149,13 +150,13 @@ let g:gundo_preview_bottom = 1
 "for using ag in ack.vim
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
-" DCM make configuration
-"  NOTE: 'linkdcm' and 'mkoampf' are alias in ~/.bashrc
-let &makeprg = "make cppf OAM_STUB=1"
+"Enable and Update to customize make command while inside vim
+" let &makeprg = "make cppf OAM_STUB=1"
 
 " run make command in vim
 nnoremap <F2> :NERDTreeToggle<CR>
 nnoremap <F5> :!mkdb<CR>:cs reset<CR>
 nnoremap <F6> :GundoToggle<CR>
 nnoremap <F7> :make<bar>copen<CR>
+nnoremap <F8> :TagbarToggle<CR>
 nnoremap <silent> <C-p> :FZF<CR> 

@@ -112,6 +112,12 @@ set listchars=tab:▸\ ,eol:¬
 " Or use your leader key + l to toggle on/off
 map <leader>l :set list!<CR> " Toggle tabs and EOL
 
+" Show trailing whitepace and spaces before a tab:
+:highlight ExtraWhitespace ctermbg=red guibg=red
+:autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+:au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+:au InsertLeave * match ExtraWhitespace /\s\+$/
+
 " Color scheme (terminal)
 set t_Co=256
 set t_ut=
@@ -130,6 +136,10 @@ set background=dark
 
 " codedark color setting
 colorscheme codedark
+
+" set the default split direction
+set splitbelow
+set splitright
 
 " syntastic configs
 set statusline+=%#warningmsg#
@@ -163,7 +173,16 @@ let g:airline_powerline_fonts = 1
 "for using ag in ack.vim
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
+"highlight current line and column
+:hi CursorLine   cterm=NONE ctermbg=233 ctermfg=NONE guibg=#1E1E1E guifg=NONE
+:hi CursorColumn cterm=NONE ctermbg=233 ctermfg=NONE guibg=#1E1E1E guifg=NONE
+:nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
+
+"set custom ctags location
+let &tags=$CTAGS_FILE
+
 "Enable and Update to customize make command while inside vim
+"For example,
 " let &makeprg = "make cppf OAM_STUB=1"
 
 " run make command in vim
@@ -172,4 +191,5 @@ nnoremap <F5> :!mkdb<CR>:cs reset<CR>
 nnoremap <F6> :GundoToggle<CR>
 nnoremap <F7> :make<bar>copen<CR>
 nnoremap <F8> :TagbarToggle<CR>
-nnoremap <silent> <C-p> :FZF<CR> 
+nnoremap <silent> <C-p> :FZF<CR>
+

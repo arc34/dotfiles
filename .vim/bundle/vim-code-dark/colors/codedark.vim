@@ -67,7 +67,8 @@ endif
 
 let s:cdNone = {'gui': 'NONE', 'cterm': 'NONE', 'cterm256': 'NONE'}
 let s:cdFront = {'gui': '#D4D4D4', 'cterm': s:cterm05, 'cterm256': '188'}
-let s:cdBack = {'gui': '#1E1E1E', 'cterm': s:cterm00, 'cterm256': '234'}
+let s:cdBack = {'gui': '#1E1E1E', 'cterm': s:cterm00, 'cterm256': '232'}
+let s:cdLNBack = {'gui': '#1E1E1E', 'cterm': s:cterm00, 'cterm256': '234'}
 
 let s:cdTabCurrent = {'gui': '#1E1E1E', 'cterm': s:cterm00, 'cterm256': '234'}
 let s:cdTabOther = {'gui': '#2D2D2D', 'cterm': s:cterm01, 'cterm256': '236'}
@@ -99,7 +100,7 @@ let s:cdDiffGreenDark = {'gui': '#373D29', 'cterm': s:cterm0B, 'cterm256': '237'
 let s:cdDiffGreenLight = {'gui': '#4B5632', 'cterm': s:cterm09, 'cterm256': '58'}
 
 let s:cdSearchCurrent = {'gui': '#49545F', 'cterm': s:cterm09, 'cterm256': '236'}
-let s:cdSearch = {'gui': '#4C4E50', 'cterm': s:cterm0A, 'cterm256': '236'}
+let s:cdSearch = {'gui': '#4C4E50', 'cterm': s:cterm0A, 'cterm256': '192'}
 
 " Syntax colors:
 
@@ -141,22 +142,22 @@ call <sid>hi('DiffText', {}, s:cdDiffRedLight, 'none', {})
 call <sid>hi('EndOfBuffer', s:cdLineNumber, s:cdBack, 'none', {})
 call <sid>hi('ErrorMsg', s:cdRed, s:cdBack, 'none', {})
 call <sid>hi('VertSplit', s:cdSplitDark, s:cdBack, 'none', {})
-call <sid>hi('Folded', s:cdLeftLight, s:cdLeftDark, 'underline', {})
-call <sid>hi('FoldColumn', s:cdLineNumber, s:cdBack, 'none', {})
+call <sid>hi('Folded', s:cdDarkBlue, s:cdLeftDark, 'underline', {})
+call <sid>hi('FoldColumn', s:cdLineNumber, s:cdLNBack, 'none', {})
 call <sid>hi('SignColumn', {}, s:cdBack, 'none', {})
 call <sid>hi('IncSearch', s:cdNone, s:cdSearchCurrent, 'none', {})
-call <sid>hi('LineNr', s:cdLineNumber, s:cdBack, 'none', {})
+call <sid>hi('LineNr', s:cdLineNumber, s:cdLNBack, 'none', {})
 call <sid>hi('CursorLineNr', s:cdPopupFront, s:cdBack, 'none', {})
 call <sid>hi('MatchParen', s:cdNone, s:cdCursorDark, 'none', {})
-call <sid>hi('ModeMsg', s:cdFront, s:cdLeftDark, 'none', {})
+call <sid>hi('ModeMsg', s:cdBlue, s:cdBack, 'none', {})
 call <sid>hi('MoreMsg', s:cdFront, s:cdLeftDark, 'none', {})
-call <sid>hi('NonText', s:cdLineNumber, s:cdBack, 'none', {})
+call <sid>hi('NonText', s:cdLineNumber, s:cdLNBack, 'none', {})
 call <sid>hi('Pmenu', s:cdPopupFront, s:cdPopupBack, 'none', {})
 call <sid>hi('PmenuSel', s:cdPopupFront, s:cdPopupHighlightBlue, 'none', {})
 call <sid>hi('PmenuSbar', {}, s:cdPopupHighlightGray, 'none', {})
 call <sid>hi('PmenuThumb', {}, s:cdPopupFront, 'none', {})
 call <sid>hi('Question', s:cdBlue, s:cdBack, 'none', {})
-call <sid>hi('Search', s:cdNone, s:cdSearch, 'none', {})
+call <sid>hi('Search', s:cdGray, s:cdSearch, 'none', {})
 call <sid>hi('SpecialKey', s:cdBlue, s:cdNone, 'none', {})
 call <sid>hi('SpellBad', s:cdNone, s:cdNone, 'undercurl', {})
 call <sid>hi('SpellCap', s:cdNone, s:cdNone, 'undercurl', {})

@@ -173,23 +173,35 @@ let g:airline_powerline_fonts = 1
 "for using ag in ack.vim
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
+"set custom ctags location
+let &tags=$CTAGS_FILE
+
+" run make command in vim
+nnoremap <F2> :NERDTreeToggle<CR>
+
+" update cscope database and reset tags
+nnoremap <F5> :!mkdb<CR>:cs reset<CR>
+
 "highlight current line and column
 :hi CursorLine   cterm=NONE ctermbg=233 ctermfg=NONE guibg=#1E1E1E guifg=NONE
 :hi CursorColumn cterm=NONE ctermbg=233 ctermfg=NONE guibg=#1E1E1E guifg=NONE
 :nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
 
-"set custom ctags location
-let &tags=$CTAGS_FILE
-
 "Enable and Update to customize make command while inside vim
 "For example,
 " let &makeprg = "make cppf OAM_STUB=1"
 
-" run make command in vim
-nnoremap <F2> :NERDTreeToggle<CR>
-nnoremap <F5> :!mkdb<CR>:cs reset<CR>
-nnoremap <F6> :GundoToggle<CR>
+" execute make in the current working directory and
+" dispaly the output on a separate vim pane
 nnoremap <F7> :make<bar>copen<CR>
-nnoremap <F8> :TagbarToggle<CR>
+
+" Hex read
+" (Note: Use -b option when opening binary using vim)
+nmap <Leader>hr :%!xxd<CR> :set filetype=xxd<CR>
+
+" Hex write
+nmap <Leader>hw :%!xxd -r<CR> :set binary<CR> :set filetype=<CR>
+
+" search files via fzf
 nnoremap <silent> <C-p> :FZF<CR>
 

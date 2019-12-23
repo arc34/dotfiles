@@ -55,6 +55,8 @@ set softtabstop=4
 set expandtab
 set noshiftround
 
+set notagrelative
+
 " disable auto line break
 set tw=0
 
@@ -169,6 +171,7 @@ let g:gundo_preview_bottom = 1
 
 "vim-airline fonts
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
 
 "for using ag in ack.vim
 let g:ackprg = 'ag --nogroup --nocolor --column'
@@ -204,4 +207,5 @@ nmap <Leader>hw :%!xxd -r<CR> :set binary<CR> :set filetype=<CR>
 
 " search files via fzf
 nnoremap <silent> <C-p> :FZF<CR>
+nnoremap <silent> <C-l> :Buffers<CR>
 

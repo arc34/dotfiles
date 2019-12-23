@@ -6,7 +6,7 @@ CTAGS='/usr/bin/ctags'
 WORK_DIR=`pwd`
 CSDB_MAIN_DIR="$HOME/.csdb"
 CSDB_TNUM_FILE="$CSDB_MAIN_DIR/tnum"
-EXT_SUPPORT_LIST="c h cpp cxx hpp hxx"
+EXT_SUPPORT_LIST="c h cc cpp cxx hpp hxx py js vue"
 
 #create cscope database main directory
 if [ ! -d "$CSDB_MAIN_DIR" ]; then
@@ -34,7 +34,8 @@ CSDB_DIR_PATH="$CSDB_MAIN_DIR/$CSDB_DIR_NAME"
 mkdir -p $CSDB_DIR_PATH
 
 #move to the terminal database path
-cd $CSDB_DIR_PATH
+pushd $OLDPWD > /dev/null
+pushd $CSDB_DIR_PATH > /dev/null
 
 #get list of source file
 INIT_FLAG=1
@@ -51,10 +52,14 @@ done
 #generate cscope database using cscope.files
 $CSCOPE -b -k -q -i $CSDB_DIR_PATH/cscope.files
 
+#go back to working directory
+#cd $WORK_DIR
+popd > /dev/null
+popd > /dev/null
+
 #generate ctags tagfile
-cd $WORK_DIR
-$CTAGS -f $CSDB_DIR_PATH/tags -R
-cd $CSDB_DIR_PATH
+#$CTAGS -f $CSDB_DIR_PATH/tags --tag-relative=no -R
+$CTAGS -f $CSDB_DIR_PATH/tags `cat $CSDB_DIR_PATH/cscope.files`
 
 #export/update env variable
 export CSCOPE_TERM=$CSDB_TNUM
@@ -62,5 +67,3 @@ export CSCOPE_WD=$WORK_DIR
 export CSCOPE_DB=$CSDB_DIR_PATH/cscope.out
 export CTAGS_FILE=$CSDB_DIR_PATH/tags
 
-#go back to working directory
-cd $WORK_DIR

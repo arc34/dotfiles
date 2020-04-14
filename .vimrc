@@ -1,18 +1,50 @@
 " Helps force plugins to load correctly when it is turned back on below
 filetype off
 
-" Our vim's plugin manager
-" (TODO: Check other plugin manager e.g. vundle)
+" keep pathogen for plugins from vim.org
 execute pathogen#infect()
 
 " Don't try to be vi compatible
 set nocompatible
 
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin() " --------------- Add Plugins From Here -------------------
+
+" let Vundle manage Vundle, required, don't remove
+Plugin 'VundleVim/Vundle.vim'
+
+" List of all plugins
+Plugin 'mattn/calendar-vim'
+Plugin 'hari-rangarajan/CCTree'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'junegunn/fzf.vim'
+Plugin 'scrooloose/nerdtree.git'
+Plugin 'chrisbra/NrrwRgn'
+Plugin 'vim-syntastic/syntastic'
+Plugin 'majutsushi/tagbar'
+Plugin 'vim-scripts/taglist.vim'
+Plugin 'vim-scripts/utl.vim'
+Plugin 'vim-airline/vim-airline'
+Plugin 'arc34/vim-code-dark'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'tpope/vim-fugitive'
+Plugin 'pangloss/vim-javascript.git'
+Plugin 'tpope/vim-obsession'
+Plugin 'jceb/vim-orgmode'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-speeddating'
+Plugin 'inkarkat/vim-SyntaxRange'
+Plugin 'dhruvasagar/vim-table-mode'
+Plugin 'posva/vim-vue'
+
+call vundle#end() " -------------- No Plugins Beyond this point ---------------
+
 " Turn on syntax highlighting
 syntax on
 
 " For plugins to load correctly
-"filetype plugin indent on
+filetype plugin indent on
 filetype plugin on
 
 " Enable and Update to change leader key (default is '\')

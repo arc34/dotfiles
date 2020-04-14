@@ -6,6 +6,8 @@ alias ff="find . -name"
 alias mkdb=". $HOME/.script/mkdb.sh; $HOME/.script/ccdb.sh"
 alias ccdb="$HOME/.script/ccdb.sh"
 alias dircmp="diff --brief -r"
+alias run-stpl-dev-env="$HOME/.script/run-stpl-dev-env.sh"
+alias run-yocto-build-env="$HOME/.script/run-yocto-build-env.sh"
 
 # FZF related configs
 FZF_TMUX=1

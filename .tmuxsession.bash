@@ -1,14 +1,14 @@
 
-# Check if tmux session named TERM Exist
+# Check if tmux session named DEV Exist
 # --------------------------------------
 isMainSessionExist() {
-    tmux has-session -t TERM 2>/dev/null
+    tmux has-session -t DEV 2>/dev/null
 }
 
 # Creates New Main Session
 # ------------------------
 createMainSession () {
-    sn="TERM"
+    sn="DEV"
 
     # Customize this section according
     # to your preference and project needs
@@ -16,35 +16,35 @@ createMainSession () {
     #   tmux session with 3 multi-panel window)
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     cd $HOME/workspace
-    tmux new-session -s TERM -d -n "workspace1"
+    tmux new-session -s DEV -d -n "workspace1"
 
     cd $HOME/workspace
-    tmux new-window -t TERM:2 -d -n "workspace2"
+    tmux new-window -t DEV:2 -d -n "workspace2"
 
     cd $HOME/workspace
-    tmux new-window -t TERM:3 -d -n "multi-panel1"
-    tmux select-window -t TERM:3
+    tmux new-window -t DEV:3 -d -n "multi-panel1"
+    tmux select-window -t DEV:3
     tmux split-window -v
 
     cd $HOME/workspace
-    tmux new-window -t TERM:4 -n "multi-panel2"
-    tmux select-window -t TERM:4
+    tmux new-window -t DEV:4 -n "multi-panel2"
+    tmux select-window -t DEV:4
     tmux split-window -h
 
     cd $HOME/workspace
-    tmux new-window -t TERM:5 -n "multi-panel3"
-    tmux select-window -t TERM:5
+    tmux new-window -t DEV:5 -n "multi-panel3"
+    tmux select-window -t DEV:5
     tmux split-window -h
     tmux split-window -v
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    tmux select-window -t TERM:1
+    tmux select-window -t DEV:1
 }
 
 # create new tmux session attached to Main Session
 # ------------------------------------------------
 attachNewSessionToMain () {
-    tmux new-session -t TERM \; set-option destroy-unattached
+    tmux new-session -t DEV \; set-option destroy-unattached
 }
 
 if [[ -z "$TMUX" ]] && [ "$SSH_CONNECTION" != "" ]; then

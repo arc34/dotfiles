@@ -230,6 +230,9 @@ nnoremap <F5> :!mkdb<CR>:cs reset<CR>
 " dispaly the output on a separate vim pane
 nnoremap <F7> :make<bar>copen<CR>
 
+"Disable auto indentation
+nnoremap <F8> :setl noai nocin nosi inde=<CR>
+
 " Hex read
 " (Note: Use -b option when opening binary using vim)
 nmap <Leader>hr :%!xxd<CR> :set filetype=xxd<CR>

@@ -2,7 +2,7 @@
 # Check if tmux session named DEV Exist
 # --------------------------------------
 isMainSessionExist() {
-    tmux has-session -t DEV 2>/dev/null
+    tmux ls 2>/dev/null
 }
 
 # Creates New Main Session
@@ -44,7 +44,7 @@ createMainSession () {
 # create new tmux session attached to Main Session
 # ------------------------------------------------
 attachNewSessionToMain () {
-    tmux new-session -t DEV \; set-option destroy-unattached
+    tmux attach-session
 }
 
 if [[ -z "$TMUX" ]] && [ "$SSH_CONNECTION" != "" ]; then

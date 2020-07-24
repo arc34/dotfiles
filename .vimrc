@@ -1,50 +1,44 @@
-" Helps force plugins to load correctly when it is turned back on below
-filetype off
-
-" keep pathogen for plugins from vim.org
-execute pathogen#infect()
-
 " Don't try to be vi compatible
 set nocompatible
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin() " --------------- Add Plugins From Here -------------------
+if empty(glob('~/.vim/autoload/plug.vim'))
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+      \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-" let Vundle manage Vundle, required, don't remove
-Plugin 'VundleVim/Vundle.vim'
+" set the runtime path to include Vundle and initialize
+call plug#begin('~/.vim/bundle') " ----------- Add Plugins From Here ----------
 
 " List of all plugins
-Plugin 'mattn/calendar-vim'
-Plugin 'hari-rangarajan/CCTree'
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'junegunn/fzf.vim'
-Plugin 'scrooloose/nerdtree.git'
-Plugin 'chrisbra/NrrwRgn'
-Plugin 'vim-syntastic/syntastic'
-Plugin 'majutsushi/tagbar'
-Plugin 'vim-scripts/taglist.vim'
-Plugin 'vim-scripts/utl.vim'
-Plugin 'vim-airline/vim-airline'
-Plugin 'arc34/vim-code-dark'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'tpope/vim-fugitive'
-Plugin 'pangloss/vim-javascript.git'
-Plugin 'tpope/vim-obsession'
-Plugin 'jceb/vim-orgmode'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-speeddating'
-Plugin 'inkarkat/vim-SyntaxRange'
-Plugin 'dhruvasagar/vim-table-mode'
-Plugin 'posva/vim-vue'
+Plug 'mattn/calendar-vim'
+Plug 'hari-rangarajan/CCTree'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'junegunn/fzf.vim'
+Plug 'preservim/nerdtree'
+Plug 'chrisbra/NrrwRgn'
+Plug 'fedorenchik/qt-support.vim'
+Plug 'vim-syntastic/syntastic'
+Plug 'majutsushi/tagbar'
+Plug 'vim-scripts/taglist.vim'
+Plug 'vim-scripts/utl.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'arc34/vim-code-dark'
+Plug 'joshdick/onedark.vim'
+Plug 'altercation/vim-colors-solarized'
+Plug 'tpope/vim-fugitive'
+Plug 'pangloss/vim-javascript'
+Plug 'tpope/vim-obsession'
+Plug 'jceb/vim-orgmode'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-speeddating'
+Plug 'inkarkat/vim-SyntaxRange'
+Plug 'dhruvasagar/vim-table-mode'
+Plug 'posva/vim-vue'
 
-call vundle#end() " -------------- No Plugins Beyond this point ---------------
-
-" Turn on syntax highlighting
-syntax on
+call plug#end() " --------------- No Plugins Beyond this point ----------------
 
 " For plugins to load correctly
-filetype plugin indent on
 filetype plugin on
 
 " Enable and Update to change leader key (default is '\')
@@ -170,6 +164,7 @@ set background=dark
 
 " codedark color setting
 colorscheme codedark
+"colorscheme onedark
 
 " set the default split direction
 set splitbelow
@@ -193,6 +188,7 @@ let g:syntastic_c_config_file = '.syntastic_config'
 
 "line 80 column highlight
 highlight ColorColumn ctermbg=235 guibg=#2c2d27
+"highlight ColorColumn ctermbg=234 guibg=#2c2d27
 let &colorcolumn="80"
 
 "gundo configs

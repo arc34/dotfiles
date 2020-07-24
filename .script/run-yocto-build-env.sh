@@ -28,7 +28,11 @@ done
 DEV_ENV_NAME="yocto-build-env-${DEV_ENV_NUM}"
 
 $DOCKERCMD run --rm -it \
+    --privileged \
     --name ${DEV_ENV_NAME} --hostname "${DEV_ENV_NAME}" \
+    -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix \
+    --group-add audio --device /dev/snd \
     -v $HOME/workspace:/home/xl4/workspace \
     -v $HOME/.ssh:/home/xl4/.ssh \
+    -v /opt/yocto:/opt/yocto \
     $IMAGE_REPO:$IMAGE_TAG

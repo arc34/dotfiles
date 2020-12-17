@@ -1,12 +1,11 @@
 #!/bin/bash
 
 #Image to use
-IMAGE_REPO='excelforejp.com:4560/xl4-build-env'
-#IMAGE_TAG='allan'
-IMAGE_TAG='allan-18.04'
+IMAGE_REPO='excelforejp.com:4560/esync-runner'
+IMAGE_TAG='develop'
 
 #Container/Host name prefix
-NAME_PREFIX='xl4-build-env'
+NAME_PREFIX='esync-runner'
 
 #######################################################################
 #################### DO NOT EDIT FROM HERE ONWARDS ####################
@@ -33,10 +32,11 @@ DEV_ENV_NAME="${NAME_PREFIX}-${DEV_ENV_NUM}"
 
 $DOCKERCMD run --rm -it \
     --privileged \
-    --name ${DEV_ENV_NAME} --hostname "${DEV_ENV_NAME}" \
+    --net host \
+    --name ${DEV_ENV_NAME} --hostname "$(hostname)" \
     -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix \
     --group-add audio --device /dev/snd \
     -v $HOME/workspace:$HOME/workspace \
-    -v $HOME/.ssh:${HOME}/.ssh \
-    -v /opt/toolchains:/opt/toolchains \
+    -v $HOME/.Xauthority:$HOME/.Xauthority \
+    -v $HOME/.ssh:$HOME/.ssh \
     $IMAGE_REPO:$IMAGE_TAG

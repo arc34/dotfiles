@@ -1,12 +1,18 @@
 #!/bin/bash
 
 #Image to use
-IMAGE_REPO='excelforejp.com:4560/xl4-build-env'
-#IMAGE_TAG='allan'
-IMAGE_TAG='allan-18.04'
+IMAGE_REPO='excelforejp.com:4560/xl4-ghs-build-env'
+#IMAGE_TAG='716.202014'
+#IMAGE_TAG='716.202014.NXP.S32-dtb-allan'
+#IMAGE_TAG='716.202014.19011-allan'
+#IMAGE_TAG='716.202014.S32G-v0.5-build-allan'
+#IMAGE_TAG='716.202014.NXP.S32.v0.4-xl4jp-build-patched'
+#IMAGE_TAG='716.202014.S32G-v0.6-allan'
+IMAGE_TAG='716.202014.S32G-v0.6-allan-work'
+#IMAGE_TAG='716.202014.S32G-v0.6'
 
 #Container/Host name prefix
-NAME_PREFIX='xl4-build-env'
+NAME_PREFIX='xl4-ghs-build-env'
 
 #######################################################################
 #################### DO NOT EDIT FROM HERE ONWARDS ####################
@@ -33,10 +39,20 @@ DEV_ENV_NAME="${NAME_PREFIX}-${DEV_ENV_NUM}"
 
 $DOCKERCMD run --rm -it \
     --privileged \
-    --name ${DEV_ENV_NAME} --hostname "${DEV_ENV_NAME}" \
+    --net host \
+    --name ${DEV_ENV_NAME} --hostname "$(hostname)" \
+    -e GHS_LMHOST=excelforejp.com \
     -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix \
     --group-add audio --device /dev/snd \
     -v $HOME/workspace:$HOME/workspace \
-    -v $HOME/.ssh:${HOME}/.ssh \
-    -v /opt/toolchains:/opt/toolchains \
+    -v $HOME/.Xauthority:$HOME/.Xauthority \
+    -v $HOME/.ssh:$HOME/.ssh \
     $IMAGE_REPO:$IMAGE_TAG
+#    --name ${DEV_ENV_NAME} --hostname "${DEV_ENV_NAME}" \
+#    -v $HOME/workspace:/home/xl4jp/workspace \
+#    -v $HOME/.Xauthority:/home/xl4jp/.Xauthority \
+#    -v $HOME/.ssh:/home/xl4jp/.ssh \
+#
+#    -v $HOME/workspace:/root/workspace \
+#    -v $HOME/.Xauthority:/root/.Xauthority \
+#

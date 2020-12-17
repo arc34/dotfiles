@@ -11,6 +11,7 @@ alias run-yocto-build-env="$HOME/.script/run-yocto-build-env.sh"
 alias run-xl4-build-env="$HOME/.script/run-xl4-build-env.sh"
 alias run-esync-build-env="$HOME/.script/run-esync-builder.sh"
 alias run-ghs-build-env="$HOME/.script/run-ghs-build-env.sh"
+alias run-esync-runner="$HOME/.script/run-esync-runner.sh"
 
 # FZF related configs
 FZF_TMUX=1
@@ -19,8 +20,3 @@ FZF_TMUX_HEIGHT=5
 
 # For automatic tmux session creation when logging in
 [ -f ~/.tmuxsession.bash ] && source ~/.tmuxsession.bash
-
-#if [ -f /usr/local/lib/python3.6/dist-packages/powerline/bindings/bash/powerline.sh ]; then
-#    source /usr/local/lib/python3.6/dist-packages/powerline/bindings/bash/powerline.sh
-#fi
-

@@ -31,8 +31,10 @@ $DOCKERCMD run --rm -it \
     --privileged \
     --name ${DEV_ENV_NAME} --hostname "${DEV_ENV_NAME}" \
     -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix \
+    -e SSH_AUTH_SOCK=$SSH_AUTH_SOCK \
     --group-add audio --device /dev/snd \
     -v $HOME/workspace:/home/xl4/workspace \
-    -v $HOME/.ssh:/home/xl4/.ssh \
     -v /opt/yocto:/opt/yocto \
+    -v $HOME/.ssh:/home/xl4/.ssh \
+    -v $(dirname $SSH_AUTH_SOCK):$(dirname $SSH_AUTH_SOCK) \
     $IMAGE_REPO:$IMAGE_TAG

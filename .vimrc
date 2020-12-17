@@ -11,17 +11,13 @@ endif
 call plug#begin('~/.vim/bundle') " ----------- Add Plugins From Here ----------
 
 " List of all plugins
-Plug 'mattn/calendar-vim'
 Plug 'hari-rangarajan/CCTree'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'editorconfig/editorconfig-vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
-Plug 'chrisbra/NrrwRgn'
 Plug 'fedorenchik/qt-support.vim'
-Plug 'vim-syntastic/syntastic'
-Plug 'majutsushi/tagbar'
-Plug 'vim-scripts/taglist.vim'
-Plug 'vim-scripts/utl.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'arc34/vim-code-dark'
 Plug 'joshdick/onedark.vim'
@@ -29,12 +25,19 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'tpope/vim-fugitive'
 Plug 'pangloss/vim-javascript'
 Plug 'tpope/vim-obsession'
+Plug 'dhruvasagar/vim-table-mode'
+Plug 'posva/vim-vue'
+
+"Org Mode Related Plugins
+Plug 'mattn/calendar-vim'
+Plug 'chrisbra/NrrwRgn'
+Plug 'majutsushi/tagbar'
+Plug 'vim-scripts/taglist.vim'
+Plug 'vim-scripts/utl.vim'
 Plug 'jceb/vim-orgmode'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-speeddating'
 Plug 'inkarkat/vim-SyntaxRange'
-Plug 'dhruvasagar/vim-table-mode'
-Plug 'posva/vim-vue'
 
 call plug#end() " --------------- No Plugins Beyond this point ----------------
 
@@ -97,14 +100,37 @@ set tw=0
 "nnoremap k gk
 
 " Allow hidden buffers
-"set hidden
+set hidden
+
+" Some servers have issues with backup files, see #649.
+set nobackup
+set nowritebackup
+
+" Give more space for displaying messages.
+"set cmdheight=2
+
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
+
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+if has("patch-8.1.1564")
+    " Recently vim can merge signcolumn and number column into one
+    set signcolumn=number
+else
+    set signcolumn=yes
+endif
 
 " Rendering
 set ttyfast
 
 " disable in favor of vim-airline
 "set rtp+=/usr/lib/python3.3/site-packages/powerline/bindings/vim/
-set rtp+=~/.fzf
+"set rtp+=~/.fzf
 
 " Status bar
 set laststatus=2
@@ -170,22 +196,6 @@ colorscheme codedark
 set splitbelow
 set splitright
 
-" syntastic configs
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_mode_map = {
-    \ "mode": "passive",
-    \ "active_filetypes": ["c"],
-    \ "passive_filetypes": [] }
-let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_c_checkers=['clang_tidy']
-let g:syntastic_c_config_file = '.syntastic_config'
-
 "line 80 column highlight
 highlight ColorColumn ctermbg=235 guibg=#2c2d27
 "highlight ColorColumn ctermbg=234 guibg=#2c2d27
@@ -200,6 +210,59 @@ let g:gundo_preview_bottom = 1
 "vim-airline fonts
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+
+"COC configs
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location
+" list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+"set tagfunc=CocTagFunc
+
+" fzf configs
+let g:fzf_preview_window = 'right:60%'
+" Customize fzf colors to match your color scheme
+" - fzf#wrap translates this to a set of `--color` options
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
+" coc fzf configs
+let g:coc_fzf_preview = ''
+let g:coc_fzf_opts = []
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+    if (index(['vim','help'], &filetype) >= 0)
+        execute 'h '.expand('<cword>')
+    else
+        call CocAction('doHover')
+    endif
+endfunction
+
+" Highlight the symbol and its references when holding the
+" cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
 "for using ag in ack.vim
 let g:ackprg = 'ag --nogroup --nocolor --column'
@@ -227,7 +290,7 @@ nnoremap <F5> :!mkdb<CR>:cs reset<CR>
 nnoremap <F7> :make<bar>copen<CR>
 
 "Disable auto indentation
-nnoremap <F8> :setl noai nocin nosi inde=<CR>
+nnoremap <F8> :setl noai nocin nosi inde=<CR>:set formatoptions-=cro<CR>
 
 " Hex read
 " (Note: Use -b option when opening binary using vim)
@@ -240,3 +303,41 @@ nmap <Leader>hw :%!xxd -r<CR> :set binary<CR> :set filetype=<CR>
 nnoremap <silent> <C-p> :FZF<CR>
 nnoremap <silent> <C-l> :Buffers<CR>
 
+" Minimize/Maximize window pane
+nnoremap <C-W>O :call MaximizeToggle()<CR>
+nnoremap <C-W>o :call MaximizeToggle()<CR>
+nnoremap <C-W><C-O> :call MaximizeToggle()<CR>
+
+function! MaximizeToggle()
+  if exists("s:maximize_session")
+    exec "source " . s:maximize_session
+    call delete(s:maximize_session)
+    unlet s:maximize_session
+    let &hidden=s:maximize_hidden_save
+    unlet s:maximize_hidden_save
+  else
+    let s:maximize_hidden_save = &hidden
+    let s:maximize_session = tempname()
+    set hidden
+    exec "mksession! " . s:maximize_session
+    only
+  endif
+endfunction
+
+ if &diff
+     map gs :call IwhiteToggle()<CR>
+     function! IwhiteToggle()
+       if &diffopt =~ 'iwhite'
+         set diffopt-=iwhite
+       else
+         set diffopt+=iwhite
+       endif
+     endfunction
+ endif
+
+if &term =~ '^xterm'
+    " normal mode
+    let &t_EI .= "\<Esc>[0 q"
+    " insert mode
+    let &t_SI .= "\<Esc>[6 q"
+endif

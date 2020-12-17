@@ -10,6 +10,7 @@ alias run-stpl-dev-env="$HOME/.script/run-stpl-dev-env.sh"
 alias run-yocto-build-env="$HOME/.script/run-yocto-build-env.sh"
 alias run-xl4-build-env="$HOME/.script/run-xl4-build-env.sh"
 alias run-esync-build-env="$HOME/.script/run-esync-builder.sh"
+alias run-ghs-build-env="$HOME/.script/run-ghs-build-env.sh"
 
 # FZF related configs
 FZF_TMUX=1

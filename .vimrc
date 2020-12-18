@@ -13,6 +13,7 @@ call plug#begin('~/.vim/bundle') " ----------- Add Plugins From Here ----------
 " List of all plugins
 Plug 'hari-rangarajan/CCTree'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'arc34/cscope_maps'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'

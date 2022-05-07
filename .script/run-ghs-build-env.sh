@@ -1,15 +1,24 @@
 #!/bin/bash
 
 #Image to use
-IMAGE_REPO='excelforejp.com:4560/xl4-ghs-build-env'
+#IMAGE_REPO='excelforejp.com:4560/xl4-ghs-build-env'
+IMAGE_REPO='excelforejp.com:5050/xl4docker/ghs-build-env'
+#IMAGE_TAG='base'
+#IMAGE_TAG='allan'
+#IMAGE_TAG='allan-work'
+IMAGE_TAG='allan-v12.8.21'
 #IMAGE_TAG='716.202014'
+#IMAGE_TAG='716.202114'
 #IMAGE_TAG='716.202014.NXP.S32-dtb-allan'
 #IMAGE_TAG='716.202014.19011-allan'
 #IMAGE_TAG='716.202014.S32G-v0.5-build-allan'
 #IMAGE_TAG='716.202014.NXP.S32.v0.4-xl4jp-build-patched'
 #IMAGE_TAG='716.202014.S32G-v0.6-allan'
-IMAGE_TAG='716.202014.S32G-v0.6-allan-work'
+#IMAGE_TAG='716.202014.S32G-v0.6-allan-work'
 #IMAGE_TAG='716.202014.S32G-v0.6'
+#IMAGE_TAG='716.202014.S32G-v0.7-allan'
+#IMAGE_TAG='716.202014.S32G-v0.8-allan-work'
+#IMAGE_TAG='716.202014.S32G-v0.9-allan'
 
 #Container/Host name prefix
 NAME_PREFIX='xl4-ghs-build-env'
@@ -49,9 +58,9 @@ $DOCKERCMD run --rm -it \
     -v $HOME/.ssh:$HOME/.ssh \
     $IMAGE_REPO:$IMAGE_TAG
 #    --name ${DEV_ENV_NAME} --hostname "${DEV_ENV_NAME}" \
-#    -v $HOME/workspace:/home/xl4jp/workspace \
-#    -v $HOME/.Xauthority:/home/xl4jp/.Xauthority \
-#    -v $HOME/.ssh:/home/xl4jp/.ssh \
+#    -v $HOME/workspace:$HOME/workspace \
+#    -v $HOME/.Xauthority:$HOME/.Xauthority \
+#    -v $HOME/.ssh:$HOME/.ssh \
 #
 #    -v $HOME/workspace:/root/workspace \
 #    -v $HOME/.Xauthority:/root/.Xauthority \

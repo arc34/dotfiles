@@ -1,7 +1,8 @@
 #!/bin/bash
 
 #Image to use
-IMAGE_REPO='excelforejp.com:4560/yocto-build-env'
+#IMAGE_REPO='excelforejp.com:4560/yocto-build-env'
+IMAGE_REPO='excelforejp.com:5050/xl4docker/yocto-build-env'
 IMAGE_TAG='latest'
 
 #######################################################################
@@ -33,8 +34,8 @@ $DOCKERCMD run --rm -it \
     -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix \
     -e SSH_AUTH_SOCK=$SSH_AUTH_SOCK \
     --group-add audio --device /dev/snd \
-    -v $HOME/workspace:/home/xl4/workspace \
+    -v $HOME/workspace:/home/xl4jp/workspace \
     -v /opt/yocto:/opt/yocto \
-    -v $HOME/.ssh:/home/xl4/.ssh \
+    -v $HOME/.ssh:/home/xl4jp/.ssh \
     -v $(dirname $SSH_AUTH_SOCK):$(dirname $SSH_AUTH_SOCK) \
     $IMAGE_REPO:$IMAGE_TAG

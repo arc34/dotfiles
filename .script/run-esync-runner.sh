@@ -36,7 +36,6 @@ $DOCKERCMD run --rm -it \
     --name ${DEV_ENV_NAME} --hostname "$(hostname)" \
     -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix \
     --group-add audio --device /dev/snd \
-    -v $HOME/workspace:$HOME/workspace \
-    -v $HOME/.Xauthority:$HOME/.Xauthority \
-    -v $HOME/.ssh:$HOME/.ssh \
+    -v $HOME/workspace:/root/workspace \
+    -v $HOME/.Xauthority:/root/.Xauthority \
     $IMAGE_REPO:$IMAGE_TAG

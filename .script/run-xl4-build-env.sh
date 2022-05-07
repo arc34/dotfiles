@@ -1,9 +1,10 @@
 #!/bin/bash
 
 #Image to use
-IMAGE_REPO='excelforejp.com:4560/xl4-build-env'
-#IMAGE_TAG='allan'
-IMAGE_TAG='allan-18.04'
+IMAGE_REPO='excelforejp.com:5050/xl4docker/xl4-build-env'
+IMAGE_TAG='allan'
+#IMAGE_TAG='allan-arm64'
+#IMAGE_TAG='allan-18.04'
 
 #Container/Host name prefix
 NAME_PREFIX='xl4-build-env'
@@ -36,6 +37,8 @@ $DOCKERCMD run --rm -it \
     --name ${DEV_ENV_NAME} --hostname "${DEV_ENV_NAME}" \
     -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix \
     --group-add audio --device /dev/snd \
+    -v /usr/local/bin/nvim:/usr/local/bin/vim \
+    -v $HOME/.config/nvim:$HOME/.config/nvim \
     -v $HOME/workspace:$HOME/workspace \
     -v $HOME/.ssh:${HOME}/.ssh \
     -v /opt/toolchains:/opt/toolchains \

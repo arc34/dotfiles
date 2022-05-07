@@ -15,8 +15,10 @@ Plug 'hari-rangarajan/CCTree'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'arc34/cscope_maps'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'elmcast/elm-vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'preservim/nerdtree'
 Plug 'fedorenchik/qt-support.vim'
 Plug 'vim-airline/vim-airline'
@@ -27,9 +29,12 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'tpope/vim-fugitive'
 Plug 'pangloss/vim-javascript'
 Plug 'mtdl9/vim-log-highlighting'
+Plug 'plasticboy/vim-markdown'
 Plug 'tpope/vim-obsession'
+"Plug 'sheerun/vim-polyglot'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'posva/vim-vue'
+Plug 'vimwiki/vimwiki'
 
 "Org Mode Related Plugins
 Plug 'mattn/calendar-vim'
@@ -214,6 +219,10 @@ let g:gundo_preview_bottom = 1
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
+"EditorConfig plugin configs
+" Ensure that certain file types is un-affected by editor config
+let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
+
 "COC configs
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location
@@ -251,6 +260,22 @@ let g:fzf_colors =
 " coc fzf configs
 let g:coc_fzf_preview = ''
 let g:coc_fzf_opts = []
+
+" vimwiki configs
+let g:vimwiki_global_ext = 0
+let g:vimwiki_list = [{'path': '~/.vimwiki/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
+"let g:vimwiki_auto_chdir = 1
+let g:vimwiki_auto_git_sync = 1
+:hi VimwikiHeader1 ctermfg=123 guifg=#5f5f87
+:hi VimwikiHeader2 ctermfg=119 guifg=#5f5faf
+:hi VimwikiHeader3 ctermfg=117 guifg=#0000FF
+:hi VimwikiHeader4 ctermfg=111 guifg=#5f87d7
+:hi VimwikiHeader5 ctermfg=105 guifg=#5f87ff
+:hi VimwikiHeader6 ctermfg=103 guifg=#5fafff
+
+" vim-markdown configs
+let g:vim_markdown_folding_style_pythonic = 1
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>

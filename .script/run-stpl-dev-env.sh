@@ -1,8 +1,8 @@
 #!/bin/bash
 
 #Image to use
-IMAGE_REPO='excelforejp.com:4560/stpl-dev-env'
-IMAGE_TAG='latest'
+IMAGE_REPO='excelforejp.com:5050/xl4tsn/stpl/xl4stpl-build-env'
+IMAGE_TAG='allan'
 
 #######################################################################
 #################### DO NOT EDIT FROM HERE ONWARDS ####################
@@ -29,10 +29,19 @@ DEV_ENV_NAME="stpl-dev-env-${DEV_ENV_NUM}"
 
 $DOCKERCMD run --rm -it \
     --privileged \
-    --name ${DEV_ENV_NAME} --hostname "${DEV_ENV_NAME}" \
+    --net host \
+    --name ${DEV_ENV_NAME} --hostname "$(hostname)" \
     -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix \
     --group-add audio --device /dev/snd \
-    -v $HOME/workspace:/home/xl4/workspace \
-    -v $HOME/.ssh:/home/xl4/.ssh \
+    -e DEB_BUILD_OPTIONS=nocheck \
+    -e DPKG_BUILDP_EXTPARAS=--no-lintian \
+    -e DEBUILD_EXTPARAS=-r\""sudo -E"\" \
+    -e DEB_SUDO=sudo \
+    -w ${PWD} \
+    -v $HOME/.config/nvim:$HOME/.config/nvim \
+    -v $HOME/.local/share/nvim:$HOME/.local/share/nvim \
+    -v $HOME/workspace:$HOME/workspace \
+    -v $HOME/.ssh:$HOME/.ssh \
     $IMAGE_REPO:$IMAGE_TAG
 #    --network=STPL_NET \
+#    --name ${DEV_ENV_NAME} --hostname "${DEV_ENV_NAME}" \

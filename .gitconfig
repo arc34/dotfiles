@@ -1,8 +1,6 @@
-[core]
-	autocrlf = input
 [user]
 	name = Allan Co
-	email = allanrodrigo.co@excelfore.com
+	email = x1098727@ti.com
 [color]
 	diff = auto
 	status = auto
@@ -10,18 +8,13 @@
 	interactive = auto
 	ui = true
 	pager = true
-[diff]
-	tool = bc3
-[difftool "bc3"]
-	trustExitCode = true
-[alias]
-	dt = difftool --dir-diff
-	cleanall = !git clean -xfd && git submodule foreach --recursive git clean -xfd && git reset --hard && git submodule foreach --recursive git reset --hard && git submodule update --init --recursive
-	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-[credential]
-	helper = cache
-[filter "lfs"]
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
+[core]
+	gitproxy = none for ti.com
+	gitproxy = /home/allan/.script/git-proxy.sh
+[http]
+	proxy = http://webproxy.ext.ti.com:80
+[https]
+	proxy = http://webproxy.ext.ti.com:80
+[include]
+	path = /home/allan/workspace/xl4tsn/TI_RTOS_TSN/Source/Sitara/processor-sdk-mcu/mcupsdk_internal/git_config/local_config.txt
+

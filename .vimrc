@@ -12,40 +12,40 @@ call plug#begin('~/.vim/bundle') " ----------- Add Plugins From Here ----------
 
 " List of all plugins
 Plug 'hari-rangarajan/CCTree'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'arc34/cscope_maps'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'elmcast/elm-vim'
+"Plug 'elmcast/elm-vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
-Plug 'preservim/nerdtree'
-Plug 'fedorenchik/qt-support.vim'
+"Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+"Plug 'preservim/nerdtree'
+"Plug 'fedorenchik/qt-support.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'arc34/vim-code-dark'
 Plug 'joshdick/onedark.vim'
-Plug 'kergoth/vim-bitbake'
-Plug 'altercation/vim-colors-solarized'
+"Plug 'kergoth/vim-bitbake'
+"Plug 'altercation/vim-colors-solarized'
 Plug 'tpope/vim-fugitive'
-Plug 'pangloss/vim-javascript'
+"Plug 'pangloss/vim-javascript'
 Plug 'mtdl9/vim-log-highlighting'
-Plug 'plasticboy/vim-markdown'
+"Plug 'plasticboy/vim-markdown'
 Plug 'tpope/vim-obsession'
 "Plug 'sheerun/vim-polyglot'
-Plug 'dhruvasagar/vim-table-mode'
-Plug 'posva/vim-vue'
-Plug 'vimwiki/vimwiki'
+"Plug 'dhruvasagar/vim-table-mode'
+"Plug 'posva/vim-vue'
+"Plug 'vimwiki/vimwiki'
 
 "Org Mode Related Plugins
-Plug 'mattn/calendar-vim'
-Plug 'chrisbra/NrrwRgn'
-Plug 'majutsushi/tagbar'
-Plug 'vim-scripts/taglist.vim'
-Plug 'vim-scripts/utl.vim'
-Plug 'jceb/vim-orgmode'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-speeddating'
-Plug 'inkarkat/vim-SyntaxRange'
+"Plug 'mattn/calendar-vim'
+"Plug 'chrisbra/NrrwRgn'
+"Plug 'majutsushi/tagbar'
+"Plug 'vim-scripts/taglist.vim'
+"Plug 'vim-scripts/utl.vim'
+"Plug 'jceb/vim-orgmode'
+"Plug 'tpope/vim-repeat'
+"Plug 'tpope/vim-speeddating'
+"Plug 'inkarkat/vim-SyntaxRange'
 
 call plug#end() " --------------- No Plugins Beyond this point ----------------
 
@@ -290,7 +290,7 @@ endfunction
 
 " Highlight the symbol and its references when holding the
 " cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
+"autocmd CursorHold * silent call CocActionAsync('highlight')
 
 "for using ag in ack.vim
 let g:ackprg = 'ag --nogroup --nocolor --column'

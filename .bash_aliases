@@ -8,6 +8,9 @@ alias ccdb="$HOME/.script/ccdb.sh"
 alias dircmp="diff --brief -r"
 alias vpnconnect="globalprotect connect -u x1098727 -p connect2.ti.com"
 alias vpndisconnect="globalprotect disconnect"
+alias setproxies="/home/allan/.script/set-proxies.sh"
+alias unsetproxies="/home/allan/.script/unset-proxies.sh"
+alias workontools="source /home/allan/workspace/TI-MCAL/Tools/dev3.8/bin/activate"
 
 # FZF related configs
 FZF_TMUX=1

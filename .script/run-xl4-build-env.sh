@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Image to use
-IMAGE_REPO='excelforejp.com:5050/xl4docker/xl4-build-env'
+IMAGE_REPO='excelforejp.com:7314/xl4docker/xl4-build-env'
 IMAGE_TAG='allan'
 #IMAGE_TAG='allan-arm64'
 #IMAGE_TAG='allan-18.04'

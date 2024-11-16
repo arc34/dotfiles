@@ -12,7 +12,7 @@ call plug#begin('~/.vim/bundle') " ----------- Add Plugins From Here ----------
 
 " List of all plugins
 Plug 'hari-rangarajan/CCTree'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'arc34/cscope_maps'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'elmcast/elm-vim'
@@ -290,7 +290,7 @@ endfunction
 
 " Highlight the symbol and its references when holding the
 " cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
+"autocmd CursorHold * silent call CocActionAsync('highlight')
 
 "for using ag in ack.vim
 let g:ackprg = 'ag --nogroup --nocolor --column'

@@ -19,6 +19,7 @@ alias run-esync-runner="$HOME/.script/run-esync-runner.sh"
 alias run-nodejs-build-env="$HOME/.script/run-nodejs-build-env.sh"
 alias run-officekeepi-remote="$HOME/.script/run-officekeepi-remote.sh"
 alias url-to-markdown="$HOME/.script/url_to_markdown.sh"
+alias work-on-schroot="schroot -c chroot:noble-amd64 -d /home/allan -- bash -c \"export PATH=~/.local/bin:${PATH}; bash\""
 
 # FZF related configs
 FZF_TMUX=1
@@ -26,4 +27,4 @@ FZF_TMUX_HEIGHT=5
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # For automatic tmux session creation when logging in
-[ -f ~/.tmuxsession.bash ] && source ~/.tmuxsession.bash
+#[ -f ~/.tmuxsession.bash ] && source ~/.tmuxsession.bash
